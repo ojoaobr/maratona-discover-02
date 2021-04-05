@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#41414C" />
   <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+
   <title>JobsCalc</title>
 
   <link rel="stylesheet" href="/styles/main.css" />
@@ -19,15 +20,12 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
-
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet" />
 </head>
 
 <body id="page-profile">
-
   <%- include('parts/page-header', {title: 'Meu Perfil' }) %>
-
     <div class="container animate-up delay-2">
       <aside class="card">
         <img 
@@ -39,14 +37,20 @@
         <p>
           O valor da sua hora é <br />
           <strong>
-            R$ 80,00
+            R$ <%= profile["value-hour"].toFixed(2).replace('.', ',') %> 
           </strong>
         </p>
-        <button class="button green" form="form-profile" type="submit">Salvar dados</button>
+        <button 
+        class="button green" 
+        form="form-profile" 
+        type="submit">Salvar dados</button>
       </aside>
       <main>
 
-        <form id="form-profile">
+        <form 
+        id="form-profile" 
+        action="/profile" 
+        method="POST">
           <fieldset>
             <legend>Dados do perfil</legend>
             <div class="separator light"></div>
@@ -62,7 +66,8 @@
               </div>
 
               <div class="input-wrapper">
-                <label for="avatar">Link da foto</label>
+                <label 
+                for="avatar">Link da foto</label>
                 <input 
                 placeholder="https://" 
                 type="url" 
@@ -79,7 +84,8 @@
 
             <div class="input-group">
               <div class="input-wrapper">
-                <label for="monthly-budget">Quanto eu <br />quero ganhar por mês?</label>
+                <label 
+                for="monthly-budget">Quanto eu <br />quero ganhar por mês?</label>
                 <input 
                 type="amount" 
                 step="0.1" 
@@ -90,7 +96,8 @@
               </div>
 
               <div class="input-wrapper">
-                <label for="hours-per-day">Quantas horas <br />
+                <label 
+                for="hours-per-day">Quantas horas <br />
                   quero trabalhar por dia?</label>
                 <input 
                 type="number" 
@@ -102,7 +109,8 @@
 
             <div class="input-group">
               <div class="input-wrapper">
-                <label for="days-per-week">Quantos dias <br />quero
+                <label 
+                for="days-per-week">Quantos dias <br />quero
                   trabalhar por semana?</label>
                 <input 
                 type="number" 
@@ -112,7 +120,8 @@
               </div>
 
               <div class="input-wrapper">
-                <label for="vacation-per-year">Quantas semanas <br />
+                <label 
+                for="vacation-per-year">Quantas semanas <br />
                   por ano você quer tirar férias?</label>
                 <input 
                 type="number" 
