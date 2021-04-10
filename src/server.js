@@ -1,15 +1,20 @@
-const express = require("express")
-const server = express()
-const routes = require("./routes")
+const express = require("express");
+const server = express();
+const routes = require("./routes");
+const path = require("path");
 
-server.set('view engine', 'ejs')
+server.set("view engine", "ejs");
 
-const PORTA = 3000
+server.set("views", path.join(__dirname, "views"));
 
-server.use(express.static("public"))
+const PORTA = 3000;
 
-server.use(express.urlencoded({ extended: true }))
+server.use(express.static("public"));
 
-server.use(routes)
+server.use(express.urlencoded({ extended: true }));
 
-server.listen(`${PORTA}`, () => console.log('Servidor ouvindo na porta ' + `${PORTA}`))
+server.use(routes);
+
+server.listen(`${PORTA}`, () =>
+  console.log("Servidor ouvindo na porta " + `${PORTA}`)
+);
